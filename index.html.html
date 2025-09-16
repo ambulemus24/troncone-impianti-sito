@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Impianti Elettrici Troncone Ciro srl — Impianti elettrici & speciali</title>
+    <meta name="description" content="Impianti Elettrici Troncone Ciro srl: impianti elettrici, videosorveglianza, antintrusione e reti dati per banche e aziende. Napoli, Campania. Tel. 0815844785." />
+    <!-- Tailwind via Play CDN (no build required) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- React 18 + ReactDOM UMD -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- Babel to compile JSX in the browser -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body class="bg-slate-50 text-slate-900">
+    <div id="root"></div>
+
+    <script type="text/babel">
+      // ---- Simple inline SVG icons ----
+      const BoltIcon = () => (
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/>
+        </svg>
+      );
+      const CameraIcon = () => (
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M3 8h4l2-3h6l2 3h4v11H3z"/>
+          <circle cx="12" cy="13" r="4"/>
+        </svg>
+      );
+      const NetworkIcon = () => (
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M2 12h7M15 12h7M12 2v7M12 15v7"/>
+        </svg>
+      );
+      const ShieldIcon = () => (
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/>
+        </svg>
+      );
+      const WrenchIcon = () => (
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M14.7 6.3a4 4 0 10-5.7 5.7l-6 6 3 3 6-6a4 4 0 005.7-5.7z"/>
+        </svg>
+      );
+      const DocIcon = () => (
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M6 2h9l5 5v15H6z"/>
+          <path d="M15 2v6h6"/>
+        </svg>
+      );
+      const ClockIcon = () => (
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M12 7v5l3 3"/>
+        </svg>
+      );
+      const CheckIcon = () => (
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M20 6L9 17l-5-5"/>
+        </svg>
+      );
+
+      function Badge({ children }) {
+        return <span className="inline-flex items-center rounded-xl bg-slate-100 px-3 py-1 text-xs font-medium">{children}</span>;
+      }
+
+      function Card({ title, children }) {
+        return (
+          <div className="rounded-3xl bg-white shadow ring-1 ring-black/5 p-6">
+            <div className="flex items-start gap-4">
+              <div className="shrink-0 h-10 w-10 rounded-2xl bg-blue-100 grid place-items-center"></div>
+              <div>
+                <h3 className="font-semibold text-lg">{title}</h3>
+                <div className="mt-2 text-sm text-slate-700 space-y-1">{children}</div>
+              </div>
+            </div>
+          </div>
+        );
+      }
+
+      function App() {
+        return (
+          <div className="min-h-screen bg-slate-50 text-slate-900">
+            {/* Navbar */}
+            <header className="sticky top-0 z-20 backdrop-blur bg-white/80 border-b">
+              <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+                <a href="#home" className="flex items-center gap-2 font-semibold">
+                  <span className="inline-block h-8 w-8 rounded-2xl bg-blue-900" />
+                  <span>Impianti Elettrici Troncone Ciro srl</span>
+                </a>
+                <nav className="hidden md:flex items-center gap-6 text-sm">
+                  <a href="#servizi" className="hover:text-blue-900">Servizi</a>
+                  <a href="#progetti" className="hover:text-blue-900">Progetti</a>
+                  <a href="#chi-siamo" className="hover:text-blue-900">Chi siamo</a>
+                  <a href="#contatti" className="hover:text-blue-900">Contatti</a>
+                </nav>
+                <a href="#contatti" className="inline-flex items-center gap-2 rounded-2xl bg-blue-900 px-4 py-2 text-sm font-medium text-white hover:bg-blue-800">
+                  Richiedi preventivo
+                </a>
+              </div>
+            </header>
+
+            {/* Hero */}
+            <section id="home" className="relative overflow-hidden">
+              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(30,58,138,0.15),transparent_60%)]"/>
+              <div className="max-w-6xl mx-auto px-4 py-20 md:py-28 grid md:grid-cols-2 gap-10 items-center">
+                <div>
+                  <h1 className="text-3xl md:text-5xl font-extrabold leading-tight">
+                    Impianti elettrici & speciali per banche e aziende
+                  </h1>
+                  <p className="mt-4 text-slate-600 md:text-lg">
+                    Progettazione, installazione e manutenzione: elettrico, videosorveglianza, antintrusione e reti dati. Squadra certificata, sicurezza di cantiere e consegna puntuale.
+                  </p>
+                  <div className="mt-6 flex flex-wrap gap-3">
+                    <a href="#servizi" className="rounded-2xl bg-blue-900 px-5 py-2.5 text-white font-medium hover:bg-blue-800">Scopri i servizi</a>
+                    <a href="#contatti" className="rounded-2xl border px-5 py-2.5 font-medium hover:bg-white">Sopralluogo gratuito</a>
+                  </div>
+                  <div className="mt-6 flex items-center gap-6 text-sm text-slate-600">
+                    <div className="flex items-center gap-2"><ShieldIcon/> Certificazioni CEI</div>
+                    <div className="flex items-center gap-2"><ClockIcon/> Pronto intervento H24</div>
+                  </div>
+                </div>
+                <div className="relative">
+                  <div className="aspect-[4/3] rounded-3xl bg-white shadow-lg ring-1 ring-black/5 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?q=80&w=1600&auto=format&fit=crop" alt="Quadro elettrico" className="h-full w-full object-cover"/>
+                  </div>
+                  <div className="absolute -bottom-6 -left-6 hidden md:block rounded-3xl bg-white shadow-lg ring-1 ring-black/5 p-4">
+                    <p className="text-sm font-semibold text-slate-900">8 tecnici certificati</p>
+                    <p className="text-xs text-slate-600">+120 cantieri consegnati</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* Servizi */}
+            <section id="servizi" className="max-w-6xl mx-auto px-4 py-16">
+              <h2 className="text-2xl md:text-3xl font-bold">Servizi</h2>
+              <p className="mt-2 text-slate-600">Dalla progettazione al collaudo, un unico referente.</p>
+              <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <Card title="Impianti elettrici">
+                  <BoltIcon/>
+                  <p>Quadri, linee, illuminazione LED, rifasamento, adeguamenti CEI.</p>
+                </Card>
+                <Card title="Impianti speciali">
+                  <CameraIcon/>
+                  <p>TVCC, antintrusione, controllo accessi, rivelazione incendi.</p>
+                </Card>
+                <Card title="Reti & Data">
+                  <NetworkIcon/>
+                  <p>Cablaggio strutturato, rack, Wi‑Fi enterprise, continuità UPS.</p>
+                </Card>
+                <Card title="Bancario / ATM">
+                  <ShieldIcon/>
+                  <p>Sostituzione ATM, casse automatiche, aree safe, mezzi forti.</p>
+                </Card>
+                <Card title="Manutenzione">
+                  <WrenchIcon/>
+                  <p>Piani programmati, verifiche di terra, pronto intervento.</p>
+                </Card>
+                <Card title="Consulenza & PSC">
+                  <DocIcon/>
+                  <p>POS/PSC, progettazione, pratiche, direzione lavori, as‑built.</p>
+                </Card>
+              </div>
+            </section>
+
+            {/* Progetti */}
+            <section id="progetti" className="bg-white border-y">
+              <div className="max-w-6xl mx-auto px-4 py-16">
+                <h2 className="text-2xl md:text-3xl font-bold">Progetti recenti</h2>
+                <div className="mt-8 grid md:grid-cols-3 gap-6">
+                  <figure className="rounded-3xl overflow-hidden shadow ring-1 ring-black/5 bg-slate-100">
+                    <img src="https://images.unsplash.com/photo-1558002038-1055907df827?q=80&w=1400&auto=format&fit=crop" alt="Progetto 1" className="w-full h-48 object-cover"/>
+                    <figcaption className="p-4">
+                      <p className="font-semibold">Filiale bancaria #1</p>
+                      <p className="text-sm text-slate-600">Sostituzione ATM, CSA, adeguamento CEI 64‑8.</p>
+                    </figcaption>
+                  </figure>
+                  <figure className="rounded-3xl overflow-hidden shadow ring-1 ring-black/5 bg-slate-100">
+                    <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=1400&auto=format&fit=crop" alt="Progetto 2" className="w-full h-48 object-cover"/>
+                    <figcaption className="p-4">
+                      <p className="font-semibold">Sede aziendale #2</p>
+                      <p className="text-sm text-slate-600">Reti dati, controllo accessi, videosorveglianza.</p>
+                    </figcaption>
+                  </figure>
+                  <figure className="rounded-3xl overflow-hidden shadow ring-1 ring-black/5 bg-slate-100">
+                    <img src="https://images.unsplash.com/photo-1581091215367-59ab6b4b5562?q=80&w=1400&auto=format&fit=crop" alt="Progetto 3" className="w-full h-48 object-cover"/>
+                    <figcaption className="p-4">
+                      <p className="font-semibold">Stabilimento #3</p>
+                      <p className="text-sm text-slate-600">Illuminazione LED e rifasamento.</p>
+                    </figcaption>
+                  </figure>
+                </div>
+              </div>
+            </section>
+
+            {/* Chi siamo */}
+            <section id="chi-siamo" className="max-w-6xl mx-auto px-4 py-16">
+              <div className="grid md:grid-cols-2 gap-10 items-start">
+                <div>
+                  <h2 className="text-2xl md:text-3xl font-bold">Chi siamo</h2>
+                  <p className="mt-4 text-slate-700">
+                    Siamo un'impresa familiare con 15 anni di esperienza. Lavoriamo per PMI e grandi clienti nazionali. Puntiamo su sicurezza, qualità documentale e tempi certi.
+                  </p>
+                  <ul className="mt-4 space-y-2 text-slate-700">
+                    <li className="flex items-center gap-2"><CheckIcon/> SOA, DURC e DVR sempre aggiornati</li>
+                    <li className="flex items-center gap-2"><CheckIcon/> Squadre interne e rete di fidati partner</li>
+                    <li className="flex items-center gap-2"><CheckIcon/> Report fotografici e as‑built consegnati a fine lavori</li>
+                  </ul>
+                </div>
+                <div className="rounded-3xl bg-white shadow ring-1 ring-black/5 p-6">
+                  <h3 className="text-lg font-semibold">Certificazioni e standard</h3>
+                  <div className="mt-4 grid sm:grid-cols-2 gap-4 text-sm">
+                    <Badge>CEI 64‑8</Badge>
+                    <Badge>CEI 79‑3</Badge>
+                    <Badge>CEI 50172</Badge>
+                    <Badge>ISO 9001</Badge>
+                  </div>
+                  <p className="mt-4 text-slate-600 text-sm">Conformità normativa e tracciabilità completa delle attività.</p>
+                </div>
+              </div>
+            </section>
+
+            {/* Contatti */}
+            <section id="contatti" className="bg-slate-900 text-white">
+              <div className="max-w-6xl mx-auto px-4 py-16 grid md:grid-cols-2 gap-10 items-start">
+                <div>
+                  <h2 className="text-2xl md:text-3xl font-bold">Contatti</h2>
+                  <p className="mt-3 text-slate-300">Parlaci del tuo progetto: ti rispondiamo entro 24 ore lavorative.</p>
+                  <div className="mt-6 space-y-2 text-slate-300 text-sm">
+                    <p>📍 Napoli, Campania</p>
+                    <p>📞 0815844785</p>
+                    <p>✉️ info@tronconeimpianti.it</p>
+                  </div>
+                </div>
+                <form className="space-y-4 bg-white text-slate-900 rounded-3xl p-6 shadow ring-1 ring-black/5" onSubmit={(e)=>e.preventDefault()}>
+                  <div>
+                    <label className="block text-sm font-medium">Nome</label>
+                    <input className="mt-1 w-full rounded-xl border px-3 py-2" placeholder="Il tuo nome"/>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium">Email</label>
+                    <input type="email" className="mt-1 w-full rounded-xl border px-3 py-2" placeholder="nome@email.it"/>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium">Messaggio</label>
+                    <textarea className="mt-1 w-full rounded-xl border px-3 py-2" rows="4" placeholder="Raccontaci cosa ti serve…"/>
+                  </div>
+                  <button className="w-full rounded-2xl bg-emerald-700 px-4 py-2.5 font-semibold text-white hover:bg-emerald-600">Invia richiesta</button>
+                  <p className="text-xs text-slate-600">(Demo) Questo form non invia email. Possiamo collegarlo a Formspree / Netlify Forms.</p>
+                </form>
+              </div>
+            </section>
+
+            {/* Footer */}
+            <footer className="bg-white">
+              <div className="max-w-6xl mx-auto px-4 py-8 text-sm text-slate-600 flex flex-wrap items-center justify-between gap-4">
+                <p>© {new Date().getFullYear()} Impianti Elettrici Troncone Ciro srl • P.IVA 00000000000</p>
+                <div className="flex items-center gap-4">
+                  <a href="#" className="hover:text-slate-900">Privacy</a>
+                  <a href="#" className="hover:text-slate-900">Cookie</a>
+                  <a href="#" className="hover:text-slate-900">Termini</a>
+                </div>
+              </div>
+            </footer>
+          </div>
+        );
+      }
+
+      const root = ReactDOM.createRoot(document.getElementById('root'));
+      root.render(<App />);
+    </script>
+  </body>
+</html>
